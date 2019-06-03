@@ -30,8 +30,11 @@ function render(state){
 }
 
 // function handleRoutes(params) {
-//     render(states[capitalize(params.path)])
-// }
+    axios
+        .get('https://jsonplaceholder.typicode.com/posts')
+        .then((response) => {
+            // We need to 'push' each and every post into states.Blog.posts
+            response.data.forEach((post) => states.Blog.posts.push(post));
 
 // Check the URL bar
 // Grab anything that is beyond window.location.origin (e.g. /about)
