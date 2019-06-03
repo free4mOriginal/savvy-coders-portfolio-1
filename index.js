@@ -29,12 +29,15 @@ function render(state){
     router.updatePageLinks();
 }
 
-// function handleRoutes(params) {
-    axios
-        .get('https://jsonplaceholder.typicode.com/posts')
-        .then((response) => {
-            // We need to 'push' each and every post into states.Blog.posts
-            response.data.forEach((post) => states.Blog.posts.push(post));
+axios
+    .get('https://jsonplaceholder.typicode.com/posts')
+    .then((response) => {
+        // We need to 'push' each and every post into states.Blog.posts
+        response.data.forEach((post) => states.Blog.posts.push(post));
+        if(router.lastRouteResolved() && router.lastRouteResolved().params.path === 'blog'){
+            render(states.Blog);
+        }
+    });
 
 // Check the URL bar
 // Grab anything that is beyond window.location.origin (e.g. /about)
