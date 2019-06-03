@@ -10,6 +10,8 @@ import { capitalize } from 'lodash';
 // capitalize 'Navigo' to make it clear that this is a CONSTRUCTOR FXN.
 import Navigo from 'navigo';
 
+import axios from 'axios';
+
 // origin is required to help our router handle localhost addresses
 const router = new Navigo(window.location.origin);
 
